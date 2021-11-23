@@ -24,10 +24,6 @@ router.get("/sales", async function(req, res){
   }
 })
 
-// var s = document.createElement("script");
-// s.type = "text/javascript";
-// s.src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js";
-// $("head").append(s);
 router.post("/sheets", async function(req, res){
   console.log(req.body);
   res.send("OK");

@@ -65,5 +65,27 @@ async function getFull(_url){
     return rData;
 }
 
+var customers = [];
+var invoices = [];
+async function getFullCustomer(pNew) {
+    if(pNew){
+        var data = await getFull("https://public.kiotapi.com/customers?includeTotal=1&includeCustomerSocial=1");
+        customers = data;
+    }
+    return customers;
+}
+async function getFullInvoice(pNew) {
+    if(pNew){
+        var data = await getFull("https://public.kiotapi.com/invoices");
+        invoices = data.filter(function(invoice){
+            return invoice.status != 2;
+        })
+        // invoices = data;
+    }
+    return invoices;
+}
+
 module.exports.getKiotViet = getKiotViet;
 module.exports.getFull = getFull;
+module.exports.getFullCustomer = getFullCustomer;
+module.exports.getFullInvoice = getFullInvoice;
